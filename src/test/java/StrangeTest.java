@@ -6,6 +6,6 @@ public class StrangeTest {
 
     @Test
     public void shouldFail() {
-        fail("By design");
+       fail("By design");
     }
 }
