@@ -13,6 +13,14 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>localrepository</id>
+            <name>local repository</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -39,12 +47,12 @@
 
     <build>
 
-        <resources>
-            <resource>
-                <directory>${project.build.directory}/dependency</directory>
-                <targetPath>lib/</targetPath>
-            </resource>
-        </resources>
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>${project.build.directory}/dependency</directory>-->
+<!--                <targetPath>lib/</targetPath>-->
+<!--            </resource>-->
+<!--        </resources>-->
         <plugins>
             <!-- Usual compilation -->
             <plugin>
@@ -73,8 +81,8 @@
                             <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
                         </manifest>
                         <manifestEntries>
-                            <Rsrc-Main-Class>com.javarush.games.racer.RacerGame</Rsrc-Main-Class>
                             <Class-Path>./</Class-Path>
+                            <Rsrc-Main-Class>com.javarush.games.racer.RacerGame</Rsrc-Main-Class>
                         </manifestEntries>
                     </archive>
                 </configuration>
@@ -84,8 +92,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
-                    <outputDirectory>
-                        ${project.build.directory}/dependency</outputDirectory>
+                    <outputDirectory>${project.build.directory}/classes/lib</outputDirectory>
                     <includeScope>compile</includeScope>
                 </configuration>
                 <executions>
